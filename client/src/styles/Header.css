@@ -1,0 +1,14 @@
+.header {
+    background-color: #333; /* 背景色を設定 */
+    color: white; /* テキスト色を白に設定 */
+    padding: 15px 20px; /* 内側余白を設定 */
+    text-align: center; /* テキストを中央揃え */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ヘッダーに影を追加 */
+  }
+  
+  .header-title {
+    margin: 0; /* デフォルトの余白を削除 */
+    font-size: 24px; /* フォントサイズを設定 */
+    font-weight: bold; /* フォントを太字に設定 */
+  }
+  

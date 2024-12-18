@@ -6,11 +6,12 @@ import Signup from './pages/SignupPage';
 import CreateEvent from './pages/CreateEventPage';
 import EventList from './pages/EventListPage';
 import Navbar from './components/Navbar.js';
-
+import Header from './components/Header.js';
 
 function App() {
   return (
     <div>
+      <Header />
       <Navbar />
 
       <Routes>
