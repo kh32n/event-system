@@ -2,6 +2,9 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/userModel.js');
 
+//TODO:ログイン処理にJWT認証のやつをつける＝＞authControllerに記載、RouteもAuthRouteに書く
+
+
 exports.createUser = (req, res) => {
     const { username, email, password } = req.body;
 
