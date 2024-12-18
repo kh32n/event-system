@@ -1,7 +1,11 @@
 import React from 'react';
+import SighupForm from '../components/SignupForm';
 
-function Signup() {
-    return <h1>Welcome to the signup Page</h1>;
+function SignupPage() {
+    return (
+        <div>
+            <SighupForm />
+        </div>
+    )
 }
-
-export default Signup;
+export default SignupPage;

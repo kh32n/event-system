@@ -26,4 +26,8 @@
   .nav ul li a:hover {
     color: #ff9900;
   }
-  
+  .auth-status {
+    font-size: 14px;
+    color: white;
+    text-align: right;
+  } 
