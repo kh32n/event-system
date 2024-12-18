@@ -1,32 +1,24 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/HomePage';
-import About from './pages/About';
-import Contact from './pages/Contact';
-
+import Login from './pages/LoginPage';
+import Signup from './pages/SignupPage';
+import CreateEvent from './pages/CreateEventPage';
+import EventList from './pages/EventListPage';
+import Navbar from './components/Navbar.js';
 
 
 function App() {
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/events" element={<EventList />} />
       </Routes>
     </div>
   );
