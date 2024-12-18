@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import '../styles/Login.css'
 function Login() {
 
   const [userID, setUserID] = useState('');
@@ -33,9 +33,9 @@ function Login() {
 
   return (
     <div className="formContainer">
-      <h1>ログイン</h1>
+      <h1 className="title">ログイン</h1>
       <hr />
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div className="inputField">
           <label htmlFor="userID">ユーザーID：</label>
           <input
@@ -58,7 +58,9 @@ function Login() {
           />
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
-        <button type="submit">ログイン</button>
+        <div className="buttonContainer">
+        <button className="login" type="submit">ログイン</button>
+        </div>
       </form>
     </div>
   );

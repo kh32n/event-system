@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import '../styles/Signup.css'
 function Sighup() {
 
   const [userID, setUserID] = useState('');
@@ -35,15 +35,16 @@ function Sighup() {
     setErrors(newErrors);
 
     if (isValid) {
+        //TODO:データベースに登録、終了後登録完了画面？
       alert('ログイン情報が送信されました！');
     }
   };
 
   return (
     <div className="formContainer">
-      <h1>新規登録</h1>
+      <h1 className="title">新規登録</h1>
       <hr />
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div className="inputField">
           <label htmlFor="userID">ユーザーID：</label>
           <input
@@ -77,7 +78,9 @@ function Sighup() {
           />
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
-        <button type="submit">ログイン</button>
+        <div className="buttonContainer">
+            <button className="signup" type="submit">登録</button>
+        </div>
       </form>
     </div>
   );
