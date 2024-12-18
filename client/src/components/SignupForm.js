@@ -36,10 +36,7 @@ function SignupForm({ addUser }) {
     setErrors(newErrors);
 
     if (isValid) {
-      // ユーザー情報が有効な場合に親コンポーネントに送信
-      alert(username)
       addUser(username, email, password);
-      alert('ログイン情報が送信されました！');
     }
   };
 
