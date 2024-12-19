@@ -1,42 +1,42 @@
 import { useState } from "react";
-import '../styles/Signup.css'
-function SighupForm() {
+import '../styles/Signup.css';
 
-  const [userID, setUserID] = useState('');
-  const [email,setEmail]=useState("");
+function SignupForm({ addUser }) {
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({ userID: '', password: '' });
+  const [errors, setErrors] = useState({ username: '', email: '', password: '' });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // フォーム送信時にページがリロードされないようにする
 
     let isValid = true;
-    const newErrors = { userID: '',email:"", password: '' };
+    const newErrors = { userID: '', email: '', password: '' };
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-    if (!userID.trim()) {
-      newErrors.userID = 'ユーザーIDを入力してください。';
+    if (!username.trim()) {
+      newErrors.username = 'ユーザーIDを入力してください。';
       isValid = false;
     }
-    if (!email.trim()) {
-        newErrors.email = 'メールアドレスを入力してください。';
-        isValid = false;
-      } else if(emailPattern.test(email.value)){
-        newErrors.email = "有効なメールアドレスを入力してください"
-        isValid = false;
-      }
 
+    if (!email.trim()) {
+      newErrors.email = 'メールアドレスを入力してください。';
+      isValid = false;
+    } else if (!emailPattern.test(email)) {
+      newErrors.email = "有効なメールアドレスを入力してください";
+      isValid = false;
+    }
 
     if (!password.trim()) {
       newErrors.password = 'パスワードを入力してください。';
       isValid = false;
-    } 
+    }
 
     setErrors(newErrors);
 
     if (isValid) {
-        //TODO:データベースに登録、終了後登録完了画面？
-      alert('ログイン情報が送信されました！');
+      addUser(username, email, password);
     }
   };
 
@@ -46,12 +46,12 @@ function SighupForm() {
       <hr />
       <form className="form" onSubmit={handleSubmit}>
         <div className="inputField">
-          <label htmlFor="userID">ユーザーID：</label>
+          <label htmlFor="username">ユーザーID：</label>
           <input
             type="text"
-            id="userID"
-            value={userID}
-            onChange={(e) => setUserID(e.target.value)}
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="ユーザーIDを入力してください"
           />
           {errors.userID && <p className="error">{errors.userID}</p>}
@@ -79,11 +79,12 @@ function SighupForm() {
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
         <div className="buttonContainer">
-            <button className="signup" type="submit">登録</button>
+          {/* ボタンをクリックしてフォーム送信が行われるようにする */}
+          <button className="signup" type="submit">登録</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default SighupForm;
+export default SignupForm;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import '../styles/Login.css'
-function LoginForm() {
+function LoginForm({LoginUser}) {
 
   const [userID, setUserID] = useState('');
   const [password, setPassword] = useState('');
@@ -27,8 +27,7 @@ function LoginForm() {
     setErrors(newErrors);
 
     if (isValid) {
-        //TODO:データベースに送信ID,PASSの確認、終了後サインイン完了画面？
-      alert('ログイン情報が送信されました！');
+      LoginUser({ username: userID, password: password });
     }
   };
 
