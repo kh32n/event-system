@@ -30,13 +30,13 @@ app.use(express.json());
 // ルートを設定
 // すべての `/api` から始まるリクエストに対して、`userRoutes` で定義されたルートを適用する
 // 例: `/api/users` のリクエストは、`userRoutes` モジュールで処理される
-app.use('/api', userRoutes);
+app.use('/api/user', userRoutes);
 
 // サーバーのルートエンドポイントを定義
 // `GET /` リクエストに対して、シンプルなメッセージをレスポンスとして返す
 app.get('/', (req, res) => {
-    // クライアントに「Server is running」のメッセージを返す
-    res.send('Server is running');
+  // クライアントに「Server is running」のメッセージを返す
+  res.send('Server is running');
 });
 
 // サーバーを指定したポートで起動する
