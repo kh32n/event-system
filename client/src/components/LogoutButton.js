@@ -1,19 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function LogoutButton() {
     const navigate = useNavigate();
-
+    const { setIsLogin } = React.useContext(AuthContext);
     const handleLogout = () => {
-        // トークンを削除
         const token = localStorage.getItem("token");
         // alert(`JWT Token: ${token}`);
         localStorage.removeItem("token");
 
-        // ログアウト後の通知
+        setIsLogin(false)
         alert("ログアウトしました");
 
-        // ログインページにリダイレクト
+
         navigate("/login");
     };
     return (
