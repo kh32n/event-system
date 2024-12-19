@@ -10,7 +10,7 @@ const cors = require('cors');
 // ユーザールートのモジュールをインポート
 // `./routes/userRoutes` にはユーザー関連の API エンドポイントが定義されている
 const userRoutes = require('./routes/userRoutes');
-
+const eventRoutes = require("./routes/eventRoutes")
 // `express` アプリケーションを作成
 // `app` オブジェクトはサーバーの設定とエンドポイントの定義を管理する
 const app = express();
@@ -28,10 +28,8 @@ app.use(cors());
 app.use(express.json());
 
 // ルートを設定
-// すべての `/api` から始まるリクエストに対して、`userRoutes` で定義されたルートを適用する
-// 例: `/api/users` のリクエストは、`userRoutes` モジュールで処理される
 app.use('/api/user', userRoutes);
-
+app.use('/api/event', eventRoutes);
 // サーバーのルートエンドポイントを定義
 // `GET /` リクエストに対して、シンプルなメッセージをレスポンスとして返す
 app.get('/', (req, res) => {
