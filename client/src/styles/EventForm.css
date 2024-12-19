@@ -1,0 +1,95 @@
+/* フォーム全体のコンテナ */
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 70%;
+    margin: 50px auto;
+}
+
+.form {
+    width: 70%;
+}
+
+/* ヘッダー */
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* 入力フィールド */
+.inputField {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.inputField label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.inputField input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.inputField input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+
+.buttonContainer {
+    text-align: right;
+    margin-top: 10%;
+}
+
+.signup {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: right;
+}
+
+.signup:hover {
+    background-color: #45a049;
+}
+
+.detailField {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.detailField label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.detailField textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    white-space: normal;
+}

@@ -1,7 +1,10 @@
 import React from 'react';
-
+import EventForm from "../components/EventForm"
 function CreateEvent() {
-    return <h1>Welcome to the Create Event Page</h1>;
+
+    return (
+        <EventForm />
+    )
 }
 
 export default CreateEvent;
