@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-
+const jwt = require("jsonwebtoken")
 const User = require('../models/userModel.js');
 
 exports.loginUser = (req, res) => {
@@ -32,7 +32,7 @@ exports.loginUser = (req, res) => {
 
             // パスワードが一致する場合のレスポンス（ログイン成功）
             res.status(200).json({ message: 'Login successful', token });
-            console.log(token)
+            // console.log(token)
         });
     });
 };
