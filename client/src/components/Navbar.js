@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Navbar.css';
+import '../styles/Navbar.css'; // CSSファイルをインポート
 import LogoutButton from './LogoutButton.js';
 import { AuthContext } from '../context/AuthContext.js';
 
@@ -8,37 +8,36 @@ function Navbar() {
   const { isLogin } = useContext(AuthContext);
 
   return (
-
     <div className="auth-status">
       {isLogin ? (
         <>
           <nav className="nav">
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/signup">Signup</Link></li>
-              <li><Link to="/create-event">CreateEvent</Link></li>
-              <li><Link to="/events">EventList</Link></li>
+            <ul className='nav_ul'>
+              <li className='nav_li'><Link to="/">ホーム</Link></li>
+              <li className='nav_li'><Link to="/signup">新規登録</Link></li>
+              <li className='nav_li'><Link to="/create-event">イベント作成</Link></li>
+              <li className='nav_li'><Link to="/events">イベント一覧</Link></li>
             </ul>
-            <p>ログイン中</p>
-            <LogoutButton />
+            <div className='lb'>
+              <LogoutButton /> {/* ログインしている場合にのみ表示 */}
+            </div>
           </nav>
         </>
       ) : (
         <>
           <nav className="nav">
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/signup">Signup</Link></li>
-              <li><Link to="/create-event">CreateEvent</Link></li>
-              <li><Link to="/events">EventList</Link></li>
+            <ul className="nav_ul">
+              <li className='nav_li'><Link to="/">ホーム</Link></li>
+              <li className='nav_li'><Link to="/login">ログイン</Link></li>
+              <li className='nav_li'><Link to="/signup">新規登録</Link></li>
+              <li className='nav_li'><Link to="/create-event">イベント作成</Link></li>
+              <li className='nav_li'><Link to="/events">イベント一覧</Link></li>
             </ul>
-            <p>未ログイン</p>
+            <p className='nav_p'>未ログイン</p>
           </nav>
         </>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 }
 

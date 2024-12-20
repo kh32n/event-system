@@ -14,11 +14,11 @@ function LogoutButton() {
         setIsLogin(false)
         alert("ログアウトしました");
 
-
+        
         navigate("/login");
     };
     return (
-        <button onClick={handleLogout}>
+        <button className='logout-button' onClick={handleLogout}>
             ログアウト
         </button>
     );

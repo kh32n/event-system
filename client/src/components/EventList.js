@@ -42,7 +42,7 @@ function EventList() {
                     ))}
                 </ul>
             ) : (
-                <p>現在、イベントはありません。</p>
+                <p className='list_p'>現在、イベントはありません。</p>
             )}
         </div>
     );

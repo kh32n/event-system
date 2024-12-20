@@ -40,8 +40,8 @@ function App() {
             element={<PrivateRoute element={<CreateEvent />} />}
           />
           
-          <Route path="/events" element={<EventList />} />
-          <Route path="/event-detail/:id" element={<EventDetailPage />} />
+          <Route path="/events" element={<PrivateRoute element={<EventList/>} />} />
+          <Route path="/event-detail/:id" element={<PrivateRoute element={<EventDetailPage />} />} />
         </Routes>
       </AuthProvider>
     </div>

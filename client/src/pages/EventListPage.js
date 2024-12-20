@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
+import '../styles/EventList.css'; // CSSファイルをインポート
 
 function EventListPage() {
     const [events, setEvents] = useState([]);
@@ -18,14 +19,14 @@ function EventListPage() {
     }, []);
 
     return (
-        <div>
-            <h1>イベント一覧</h1>
-            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+        <div className="event-list-container">
+            <h1 className='list_title'>イベント一覧</h1>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
             {events.length > 0 ? (
-                <ul>
+                <ul className='list_ul'>
                     {events.map((event) => (
-                        <li key={event.id}>
-                            <h3>{event.name}</h3>
+                        <li className="list_li" key={event.id}>
+                            <h3 className='list_h3'>{event.name}</h3>
                             <Link to={`/event-detail/${event.id}`}>詳細を見る</Link> {/* 詳細ページへのリンク */}
                         </li>
                     ))}

@@ -1,36 +1,73 @@
-.container {
+/* イベントリストページのコンテナ */
+.event-list-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* ページタイトル */
+.list_title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2d3e50;
+    margin-bottom: 20px;
+}
+
+/* エラーメッセージのスタイル */
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* イベントリスト */
+.list_ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* 各イベント項目 */
+.list_li {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 15px 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap: 20px;
-
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 100%;
-
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.container h1 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+/* イベント名 */
+.list_h3 {
+    font-size: 1.8rem;
     color: #333;
+    margin-bottom: 10px;
 }
 
-.container h3 {
-    display: block;
-    font-size: 25px;
-    margin-bottom: 5px;
-    color: #555;
+/* イベント詳細リンク */
+li a {
+    font-size: 1.2rem;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
 }
 
-.container li {
-    list-style: none;
+/* 詳細リンクのホバー効果 */
+li a:hover {
+    text-decoration: underline;
+    color: #0056b3;
 }
 
-.container p {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-
+/* イベントがない場合のメッセージ */
+.list_p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
 }
