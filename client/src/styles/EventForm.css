@@ -71,19 +71,19 @@
     background-color: #45a049;
 }
 
-.detailField {
+.descriptionField {
     width: 100%;
     margin-bottom: 15px;
 }
 
-.detailField label {
+.descriptionField label {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
     color: #555;
 }
 
-.detailField textarea {
+.descriptionField textarea {
     width: 100%;
     height: 150px;
     padding: 10px;
