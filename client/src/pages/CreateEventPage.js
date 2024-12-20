@@ -4,16 +4,18 @@ import Axios from 'axios';
 
 
 function CreateEvent() {
-    const CreateEv = ({ eventname, date, locate, detail }) => {
-        Axios.post('http://localhost:3001/api/event/create', {})
-            .then((res) => { })
+    const addEvent = ({ name, date, location, description }) => {
+        Axios.post('http://localhost:3001/api/event/create', {name,date,location,description})
+            .then((res) => {
+                alert("addevent")
+             })
             .catch(err => {
                 alert(err.response?.data?.error);
             });
     }
 
     return (
-        <EventForm />
+        <EventForm addEvent={addEvent}/>
     )
 }
 

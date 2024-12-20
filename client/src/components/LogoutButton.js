@@ -9,6 +9,7 @@ function LogoutButton() {
         const token = localStorage.getItem("token");
         // alert(`JWT Token: ${token}`);
         localStorage.removeItem("token");
+        localStorage.removeItem("userID")
 
         setIsLogin(false)
         alert("ログアウトしました");

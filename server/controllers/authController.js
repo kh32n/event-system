@@ -65,8 +65,8 @@ exports.loginUser = (req, res) => {
             );
 
             // パスワードが一致する場合のレスポンス（ログイン成功）
-            res.status(200).json({ message: 'Login successful', token });
-            // console.log(token)
+            res.status(200).json({ message: 'Login successful', token, userId: user.id});
+            console.log(user.id)
         });
     });
 };

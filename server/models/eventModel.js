@@ -3,9 +3,9 @@ const db = require("../config/dbConfig.js")
 
 const Event = {
     createEvent: (data, callback) => {
-        const query = `INSERT INTO event (eventname, date, locate,detail) VALUES (?, ?, ?,?)`;
+        const query = `INSERT INTO events (name, date, location,description) VALUES (?, ?, ?,?)`;
 
-        db.query(query, [data.eventname, data.date, data.locate, data.detail], callback);
+        db.query(query, [data.name, data.date, data.location, data.description], callback);
 
     }
 

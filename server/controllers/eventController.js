@@ -1,8 +1,9 @@
 const Event = require("../models/eventModel")
 
 exports.createEvent = (req, res) => {
-    const { eventname, date, locate, detail } = req.body;
-    Event.createEvent({ username, email, password: hashedPassword }, (err, result) => {
+    const { name, date, location, description } = req.body;
+    console.log(name)
+    Event.createEvent({ name, date, location,description }, (err, result) => {
         if (err) {
             console.log(err);
         }

@@ -1,23 +1,23 @@
 import { useState } from "react";
 import '../styles/EventForm.css';
 
-function EventForm({ addUser }) {
+function EventForm({ addEvent }) {
 
-    const [eventname, setEventName] = useState('');
+    const [name, setName] = useState('');
     const [date, setDate] = useState('');
-    const [locate, setLocate] = useState('');
-    const [detail, setDetail] = useState("");
-    const [errors, setErrors] = useState({ eventname: '', date: "", locate: '', detail: '' });
+    const [location, setLocation] = useState('');
+    const [description, setDescription] = useState("");
+    const [errors, setErrors] = useState({ name: '', date: "", location: '', description: '' });
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         let isValid = true;
-        const newErrors = { eventname: '', data: "", locate: '', detail: '' };
+        const newErrors = { name: '', data: "", location: '', description: '' };
 
-        if (!eventname.trim()) {
-            newErrors.eventname = 'ユーザーIDを入力してください。';
+        if (!name.trim()) {
+            newErrors.name = 'ユーザーIDを入力してください。';
             isValid = false;
         }
 
@@ -26,18 +26,18 @@ function EventForm({ addUser }) {
             isValid = false;
         }
 
-        if (!locate.trim()) {
-            newErrors.locate = '場所を入力してください。';
+        if (!location.trim()) {
+            newErrors.location = '場所を入力してください。';
             isValid = false;
         }
-        if (!detail.trim()) {
-            newErrors.detail = '詳細を入力してください。';
+        if (!description.trim()) {
+            newErrors.description = '詳細を入力してください。';
             isValid = false;
         }
         setErrors(newErrors);
 
         if (isValid) {
-            alert("OK")
+            addEvent({name,date,location,description})
         }
     };
 
@@ -47,14 +47,14 @@ function EventForm({ addUser }) {
             <hr />
             <form className="form" onSubmit={handleSubmit}>
                 <div className="inputField">
-                    <label htmlFor="eventname">イベント名：</label>
+                    <label htmlFor="name">イベント名：</label>
                     <input
                         type="text"
-                        id="eventname"
-                        value={eventname}
-                        onChange={(e) => setEventName(e.target.value)}
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                     />
-                    {errors.eventname && <p className="error">{errors.eventname}</p>}
+                    {errors.name && <p className="error">{errors.name}</p>}
                 </div>
                 <div className="inputField">
                     <label htmlFor="date">日時：</label>
@@ -67,25 +67,25 @@ function EventForm({ addUser }) {
                     {errors.date && <p className="error">{errors.date}</p>}
                 </div>
                 <div className="inputField">
-                    <label htmlFor="locate">場所：</label>
+                    <label htmlFor="location">場所：</label>
                     <input
                         type="text"
-                        id="locate"
-                        value={locate}
-                        onChange={(e) => setLocate(e.target.value)}
+                        id="location"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
                     />
-                    {errors.locate && <p className="error">{errors.locate}</p>}
+                    {errors.location && <p className="error">{errors.location}</p>}
                 </div>
-                <div className="detailField">
-                    <label htmlFor="detail">詳細：</label>
+                <div className="descriptionField">
+                    <label htmlFor="description">詳細：</label>
                     <textarea
-                        id="detail"
-                        value={detail}
-                        onChange={(e) => setDetail(e.target.value)}
+                        id="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                         rows="7"  // 高さを指定
                         cols="63" // 幅を指定
                     />
-                    {errors.detail && <p className="error">{errors.detail}</p>} {/* エラーメッセージは別の要素で表示 */}
+                    {errors.description && <p className="error">{errors.description}</p>} {/* エラーメッセージは別の要素で表示 */}
                 </div>
                 <div className="buttonContainer">
                     {/* ボタンをクリックしてフォーム送信が行われるようにする */}

@@ -14,6 +14,9 @@ function LoginPage() {
                 const token = res.data.token;
                 localStorage.setItem("token", token);
                 // alert(`JWT Token: ${token}`);
+                const userID = res.data.userId
+                localStorage.setItem("userID",userID)
+                // alert(userID)
                 setIsLogin(true)
                 navigate("/");
 
