@@ -4,6 +4,7 @@ import Home from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import Signup from './pages/SignupPage';
 import CreateEvent from './pages/CreateEventPage';
+
 import EventList from './pages/EventListPage';
 import Navbar from './components/Navbar.js';
 import Header from './components/Header.js';
@@ -38,6 +39,7 @@ function App() {
             path="/create-event"
             element={<PrivateRoute element={<CreateEvent />} />}
           />
+          
           <Route path="/events" element={<EventList />} />
         </Routes>
       </AuthProvider>

@@ -1,7 +1,10 @@
 import React from 'react';
+import EventList from '../components/EventList';
 
-function EventList() {
-    return <h1>Welcome to the Event List Page</h1>;
+function EventListPage() {
+    return (
+        <EventList />
+    )
 }
 
-export default EventList;
+export default EventListPage;
