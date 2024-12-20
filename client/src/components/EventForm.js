@@ -17,7 +17,7 @@ function EventForm({ addEvent }) {
         const newErrors = { name: '', data: "", location: '', description: '' };
 
         if (!name.trim()) {
-            newErrors.name = 'ユーザーIDを入力してください。';
+            newErrors.name = 'イベント名を入力してください。';
             isValid = false;
         }
 

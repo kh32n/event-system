@@ -21,3 +21,24 @@ exports.getEvent = (req, res) => {
         res.status(200).json(events);
     });
 };
+
+exports.getEventDetails = (req, res) => {
+    const { id } = req.params; // :id からパラメータを取得
+    // console.log('Event ID:', id); // ID をコンソールで確認
+
+    if (!id) {
+        return res.status(400).json({ error: 'IDパラメータが不足しています。' });
+    }
+
+    Event.getEventById(id, (err, event) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: 'イベント詳細の取得中にエラーが発生しました。' });
+        }
+        if (!event) {
+            return res.status(404).json({ error: '指定されたイベントは存在しません。' });
+        }
+        // console.log(event)
+        res.status(200).json(event);  // イベント詳細を返す
+    });
+};

@@ -12,7 +12,13 @@ const Event = {
     getEvents: (callback) => {
         const query = 'SELECT * FROM events ORDER BY created_at DESC'; // 最新のイベント順に取得
         db.query(query, callback);
+    },
+
+    getEventById: (id, callback) => {
+        const query = `SELECT * FROM events WHERE id = ?`;
+        db.query(query, [id], callback);
+
     }
-}
+};
 
 module.exports = Event;

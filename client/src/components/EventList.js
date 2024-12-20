@@ -37,7 +37,7 @@ function EventList() {
                     {events.map((event) => (
                         <li key={event.id}>
                             <h3>{event.name}</h3>
-                            <Link to={`/event/${event.id}`}>詳細を見る</Link>
+                            <Link to={`/event-detail/${event.id}`}>詳細を見る</Link>
                         </li>
                     ))}
                 </ul>

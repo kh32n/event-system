@@ -1,10 +1,13 @@
-import React from 'react';
-import EventList from '../components/EventList';
+import React, { useState, useEffect } from 'react';
+import EventDetail from "../components/EventDetail"
 
 function EventDetailPage() {
+
     return (
-        <EventList />
-    )
+        <div>
+            <EventDetail />
+        </div>
+        );
 }
 
 export default EventDetailPage;
