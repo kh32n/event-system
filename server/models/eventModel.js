@@ -46,8 +46,19 @@ const Event = {
             // 成功時にコールバックを呼ぶ
             callback(null, result);
         });
-    }
-};
-
-
+    },
+    getUserEvents: (data, callback) => {
+        const query = 'SELECT * FROM events where user_id = ?';
+        db.query(query, [data.user_id], (err, result) => {
+            if (err) {
+                console.error('イベント一覧の取得中にエラー:', err);
+                return callback(err, null);  // エラー時にコールバックでエラーを返す
+            }
+    
+    
+            // 正常に取得できた場合、イベントリストをコールバックに渡す
+            callback(null, result);
+        });
+}
+}
 module.exports = Event;

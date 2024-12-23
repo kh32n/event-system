@@ -11,6 +11,8 @@ function UserProfile() {
         password: ''
     });
 
+    const [events,setEvents] = useState("")
+
     const user_id = localStorage.getItem("userID")
     useEffect(() => {
 
@@ -25,6 +27,22 @@ function UserProfile() {
         fetchUserData();
     }, []);
 
+    useEffect(() => {
+
+        const getEventData = async () => {
+            try {
+                const response = await axios.post('http://localhost:3001/api/event/user_list',{user_id});
+                setEvents(response.data);
+                
+
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+        getEventData();
+    }, []);
+
+
     return (
         <div className="profile-container">
             <h1>プロフィールページ</h1>
@@ -37,6 +55,23 @@ function UserProfile() {
                 <p>{userData.email}</p>
             </div>
             <p><Link to="/user-profile/edit" >編集</Link></p>
+
+            <div className="event-list-container">
+            <h1 className='list_title'>参加イベント一覧</h1>
+
+            {events.length > 0 ? (
+                <ul className='list_ul'>
+                    {events.map((event) => (
+                        <li className="list_li" key={event.id}>
+                            <h3 className='list_h3'>{event.name}</h3>
+                            <Link to={`/event-detail/${event.id}`}>詳細を見る</Link> {/* 詳細ページへのリンク */}
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>現在、イベントはありません。</p>
+            )}
+        </div>
         </div>
     );
 }

@@ -9,6 +9,9 @@ router.post('/create', eventController.createEvent);
 // イベント一覧取得
 router.get('/list', eventController.getEvent);
 
+// イベント一覧取得
+router.post('/user_list', eventController.getUserEvent);
+
 // イベント詳細取得 (idパラメータを使う)
 router.get('/detail/:id', eventController.getEventDetails);
 

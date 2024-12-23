@@ -72,3 +72,15 @@ exports.cancelEvent = (req, res) => {
         res.status(200).json({ message: 'Event join done' });
     });
 };
+
+exports.getUserEvent = (req, res) => {
+    const user_id = req.body.user_id
+
+    Event.getUserEvents({user_id},(err, events) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: 'イベント一覧の取得中にエラーが発生しました。' });
+        }
+        res.status(200).json(events);
+    });
+};
