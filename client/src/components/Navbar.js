@@ -14,7 +14,6 @@ function Navbar() {
           <nav className="nav">
             <ul className='nav_ul'>
               <li className='nav_li'><Link to="/">ホーム</Link></li>
-              <li className='nav_li'><Link to="/signup">新規登録</Link></li>
               <li className='nav_li'><Link to="/create-event">イベント作成</Link></li>
               <li className='nav_li'><Link to="/events">イベント一覧</Link></li>
             </ul>
@@ -30,8 +29,6 @@ function Navbar() {
               <li className='nav_li'><Link to="/">ホーム</Link></li>
               <li className='nav_li'><Link to="/login">ログイン</Link></li>
               <li className='nav_li'><Link to="/signup">新規登録</Link></li>
-              <li className='nav_li'><Link to="/create-event">イベント作成</Link></li>
-              <li className='nav_li'><Link to="/events">イベント一覧</Link></li>
             </ul>
             <p className='nav_p'>未ログイン</p>
           </nav>

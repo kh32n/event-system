@@ -42,10 +42,6 @@ function EventDetailPage() {
                 console.error("Error fetching event details", err);
             });
         }
-
-
-
-        //TODO:キャンセルを押したらデータベースから削除unique_user_eventを参照して
     };
 
     if (!event) {
