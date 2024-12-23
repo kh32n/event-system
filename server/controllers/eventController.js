@@ -8,7 +8,6 @@ exports.createEvent = (req, res) => {
         }
         res.status(201).json({ message: 'Event created successfully!' });
     })
-    
 }
 
 exports.getEvent = (req, res) => {
@@ -40,5 +39,36 @@ exports.getEventDetails = (req, res) => {
         }
         // console.log(event)
         res.status(200).json(event);  // イベント詳細を返す
+    });
+};
+
+exports.joinEvent = (req, res) => {
+    const { id } = req.params; // :id からパラメータを取得
+    // console.log('Event ID:', id); // ID をコンソールで確認
+    const user_id = req.body.userID
+
+    if (!id) {
+        return res.status(400).json({ error: 'IDパラメータが不足しています。' });
+    }
+
+    Event.joinEvent({ user_id: user_id, event_id: id }, (err, event) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: 'イベント詳細の取得中にエラーが発生しました。' });
+        }
+        res.status(200).json({ message: 'Event join done' });
+    });
+}
+
+exports.cancelEvent = (req, res) => {
+    const { id } = req.params; // :id からパラメータを取得
+    // console.log('Event ID:', id); // ID をコンソールで確認
+    const user_id = req.body.userID
+    Event.deleteEvent({ user_id: user_id, event_id: id }, (err, event) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: 'イベント詳細の取得中にエラーが発生しました。' });
+        }
+        res.status(200).json({ message: 'Event join done' });
     });
 };

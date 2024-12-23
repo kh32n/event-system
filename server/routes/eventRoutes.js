@@ -12,4 +12,10 @@ router.get('/list', eventController.getEvent);
 // イベント詳細取得 (idパラメータを使う)
 router.get('/detail/:id', eventController.getEventDetails);
 
+//イベント参加登録
+router.post('/join/:id', eventController.joinEvent);
+
+//イベント参加取り消し
+router.post('/cancel/:id', eventController.cancelEvent);
+
 module.exports = router;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../styles/EventDetail.css';
+import axios from 'axios';
 
 function EventDetailPage() {
     const { id } = useParams();
@@ -27,6 +28,21 @@ function EventDetailPage() {
         setIsJoin(!isJoin);
         //TODO;参加を押した際にデータベースに保存
         //id,user_id,event_id,registered_at(参加した時間),unique_user_event
+        const userID = localStorage.getItem("userID");
+        if (!isJoin){
+            axios.post(`http://localhost:3001/api/event/join/${id}`, { userID})
+            .catch((err) => {
+                console.error("Error fetching event details", err);
+                alert("すでに参加しています")
+            });
+        }
+        if (isJoin){
+            axios.post(`http://localhost:3001/api/event/cancel/${id}`, { userID})
+            .catch((err) => {
+                console.error("Error fetching event details", err);
+            });
+        }
+
 
 
         //TODO:キャンセルを押したらデータベースから削除unique_user_eventを参照して
