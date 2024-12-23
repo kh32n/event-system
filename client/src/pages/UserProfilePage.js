@@ -33,7 +33,6 @@ function UserProfile() {
             try {
                 const response = await axios.post('http://localhost:3001/api/event/user_list',{user_id});
                 setEvents(response.data);
-                
 
             } catch (error) {
                 console.error('Error fetching user data:', error);
@@ -42,6 +41,14 @@ function UserProfile() {
         getEventData();
     }, []);
 
+    const handleParticipationToggle = (id) => {
+        axios.post(`http://localhost:3001/api/event/cancel/${id}`, { user_id })
+            .then(() => {
+            })
+            .catch((err) => {
+                console.error("Error canceling event participation", err);
+            });
+    }
 
     return (
         <div className="profile-container">
@@ -64,7 +71,11 @@ function UserProfile() {
                     {events.map((event) => (
                         <li className="list_li" key={event.id}>
                             <h3 className='list_h3'>{event.name}</h3>
-                            <Link to={`/event-detail/${event.id}`}>詳細を見る</Link> {/* 詳細ページへのリンク */}
+                            <p>{event.date}</p>
+                            <p>{event.description}</p>
+                            <div className='button-container'>
+                            <button onClick={() => handleParticipationToggle(event.id)} >参加取り消し</button>
+                            </div>
                         </li>
                     ))}
                 </ul>

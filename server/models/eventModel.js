@@ -48,7 +48,12 @@ const Event = {
         });
     },
     getUserEvents: (data, callback) => {
-        const query = 'SELECT * FROM events where user_id = ?';
+        const query = `
+            SELECT events.id, events.name, events.date, events.location, events.description
+            FROM events
+            JOIN event_registrations ON events.id = event_registrations.event_id
+            WHERE event_registrations.user_id = ?
+        `;
         db.query(query, [data.user_id], (err, result) => {
             if (err) {
                 console.error('イベント一覧の取得中にエラー:', err);
