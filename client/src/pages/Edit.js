@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function Edit() {
     const navigate = useNavigate();
     const userId = localStorage.getItem("userID")
+    //ユーザー情報更新関数
   const updateUser = (username, email, password) => {
     Axios.put('http://localhost:3001/api/user/update', {userId, username, email, password })
       .then(() => {

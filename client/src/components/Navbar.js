@@ -5,6 +5,7 @@ import LogoutButton from './LogoutButton.js';
 import { AuthContext } from '../context/AuthContext.js';
 
 function Navbar() {
+  //現在のログイン状態を取得
   const { isLogin } = useContext(AuthContext);
 
   return (

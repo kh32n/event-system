@@ -7,6 +7,8 @@ import { AuthContext } from '../context/AuthContext.js';
 function LoginPage() {
     const navigate = useNavigate();
     const { setIsLogin } = React.useContext(AuthContext);
+
+    //ログイン処理
     const LoginUser = ({ username, password }) => {
         Axios.post('http://localhost:3001/api/user/login', { username, password })
             .then((res) => {

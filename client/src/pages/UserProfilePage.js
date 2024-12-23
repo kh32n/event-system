@@ -16,10 +16,11 @@ function UserProfile() {
     const user_id = localStorage.getItem("userID")
     useEffect(() => {
 
+        //ユーザー情報を取得
         const fetchUserData = async () => {
             try {
                 const response = await axios.post('http://localhost:3001/api/profile/get',{user_id});
-                setUserData(response.data);
+                setUserData(response.data); //取得したユーザー情報を格納
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
@@ -27,8 +28,8 @@ function UserProfile() {
         fetchUserData();
     }, []);
 
+    //参加予定のイベントを取得
     useEffect(() => {
-
         const getEventData = async () => {
             try {
                 const response = await axios.post('http://localhost:3001/api/event/user_list',{user_id});
@@ -40,7 +41,7 @@ function UserProfile() {
         };
         getEventData();
     }, []);
-
+    //参加取り消し処理
     const Delete = (event_id) => {
         axios.post(`http://localhost:3001/api/event/delete`, { user_id,event_id })
             .then(() => {

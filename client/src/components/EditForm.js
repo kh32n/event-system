@@ -8,10 +8,12 @@ function SignupForm({ updateUser }) {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ username: '', email: '', password: '' });
 
+  //ボタンを押したときの処理
   const handleSubmit = (e) => {
     e.preventDefault(); // フォーム送信時にページがリロードされないようにする
 
     let isValid = true;
+    //メールアドレスのバリデーション
     const newErrors = { userID: '', email: '', password: '' };
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
@@ -54,6 +56,7 @@ function SignupForm({ updateUser }) {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="ユーザーIDを入力してください"
           />
+          {/*エラーがあった際に表示*/}
           {errors.userID && <p className="error">{errors.userID}</p>}
         </div>
         <div className="inputField">
@@ -65,6 +68,7 @@ function SignupForm({ updateUser }) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="メールアドレスを入力してください"
           />
+          {/*エラーがあった際に表示*/}
           {errors.email && <p className="error">{errors.email}</p>}
         </div>
         <div className="inputField">
@@ -76,10 +80,10 @@ function SignupForm({ updateUser }) {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="パスワードを入力してください"
           />
+          {/*エラーがあった際に表示*/}
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
         <div className="buttonContainer">
-          {/* ボタンをクリックしてフォーム送信が行われるようにする */}
           <button className="signup" type="submit">登録</button>
         </div>
       </form>

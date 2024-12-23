@@ -4,6 +4,7 @@ import Axios from 'axios';
 
 
 function CreateEvent() {
+    //イベントの追加処理
     const addEvent = ({ name, date, location, description }) => {
         const userID = localStorage.getItem("userID");
         Axios.post('http://localhost:3001/api/event/create', {name,date,location,description,userID})
@@ -16,6 +17,7 @@ function CreateEvent() {
     }
 
     return (
+        
         <EventForm addEvent={addEvent}/>
     )
 }

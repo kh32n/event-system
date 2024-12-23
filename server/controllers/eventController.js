@@ -1,5 +1,6 @@
 const Event = require("../models/eventModel")
 
+//イベント作成
 exports.createEvent = (req, res) => {
     const { name, date, location, description ,userID} = req.body;
     Event.createEvent({ name, date, location,description ,userID}, (err, result) => {
@@ -9,7 +10,7 @@ exports.createEvent = (req, res) => {
         res.status(201).json({ message: 'Event created successfully!' });
     })
 }
-
+//イベント情報取得
 exports.getEvent = (req, res) => {
 
     Event.getEvents((err, events) => {
@@ -20,7 +21,7 @@ exports.getEvent = (req, res) => {
         res.status(200).json(events);
     });
 };
-
+//イベント詳細取得
 exports.getEventDetails = (req, res) => {
     const { id } = req.params; // :id からパラメータを取得
     // console.log('Event ID:', id); // ID をコンソールで確認
@@ -42,6 +43,7 @@ exports.getEventDetails = (req, res) => {
     });
 };
 
+//イベント参加処理
 exports.joinEvent = (req, res) => {
     const { id } = req.params; // :id からパラメータを取得
     // console.log('Event ID:', id); // ID をコンソールで確認
@@ -60,6 +62,7 @@ exports.joinEvent = (req, res) => {
     });
 }
 
+//イベント参加取り消し処理
 exports.cancelEvent = (req, res) => {
     const { id } = req.params; // :id からパラメータを取得
     // console.log('Event ID:', id); // ID をコンソールで確認
@@ -72,7 +75,7 @@ exports.cancelEvent = (req, res) => {
         res.status(200).json({ message: 'Event join done' });
     });
 };
-
+//ユーザーが参加予定のイベント取得
 exports.getUserEvent = (req, res) => {
     const user_id = req.body.user_id
 
@@ -85,6 +88,7 @@ exports.getUserEvent = (req, res) => {
     });
 };
 
+//ユーザーが参加予定のイベントを取り消し
 exports.deleEvent = (req, res) => {
     const {user_id,event_id} = req.body
     // console.log('Event ID:', event_id); // ID をコンソールで確認

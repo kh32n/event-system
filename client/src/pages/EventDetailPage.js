@@ -5,6 +5,7 @@ function EventDetailPage() {
 
     return (
         <div>
+            {/*イベント詳細表示コンポーネント   */}
             <EventDetail />
         </div>
         );

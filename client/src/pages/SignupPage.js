@@ -2,6 +2,7 @@ import React from 'react';
 import SignupForm from '../components/SignupForm';
 import Axios from 'axios'
 
+//サインアップ処理
 function SignupPage() {
   const addUser = (username, email, password) => {
     Axios.post('http://localhost:3001/api/user/create', { username, email, password })

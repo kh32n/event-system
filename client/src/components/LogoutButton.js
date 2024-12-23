@@ -5,16 +5,15 @@ import { AuthContext } from '../context/AuthContext';
 function LogoutButton() {
     const navigate = useNavigate();
     const { setIsLogin } = React.useContext(AuthContext);
+    //ログアウトボタンを押したときの処理
     const handleLogout = () => {
-        const token = localStorage.getItem("token");
-        // alert(`JWT Token: ${token}`);
+        //JWTトークンとユーザーIDを削除
         localStorage.removeItem("token");
         localStorage.removeItem("userID")
 
         setIsLogin(false)
         alert("ログアウトしました");
 
-        
         navigate("/login");
     };
     return (

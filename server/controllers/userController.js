@@ -1,6 +1,7 @@
 // eventController.js
 const Event = require("../models/userModel")
 
+//ユーザー情報取得
 exports.getProfile = (req, res) => {
     const user_id = req.body.user_id
 

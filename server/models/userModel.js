@@ -33,6 +33,7 @@ const User = {
         });
     },
 
+    //ユーザー情報の取得
     getUserProfile: (user_id, callback) => {
         const query = 'SELECT username, email, password FROM users WHERE id = ?';
         db.query(query, [user_id], (err, result) => {
@@ -47,6 +48,8 @@ const User = {
             return callback(null, result[0]);
         });
     },
+
+    //ユーザー情報の更新処理
     updateProfile: (userId, data, callback) => {
         const { username, email, password } = data;
         let query = 'UPDATE users SET username = ?, email = ? WHERE id = ?';

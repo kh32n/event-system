@@ -8,10 +8,12 @@ function SignupForm({ addUser }) {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ username: '', email: '', password: '' });
 
+  //ボタンを押したときの処理
   const handleSubmit = (e) => {
     e.preventDefault(); // フォーム送信時にページがリロードされないようにする
 
     let isValid = true;
+    //メールアドレスのバリデーション
     const newErrors = { userID: '', email: '', password: '' };
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 

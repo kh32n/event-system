@@ -9,7 +9,7 @@ function EventForm({ addEvent }) {
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState({ name: '', date: "", location: '', description: '' });
 
-
+    //ボタンを押したときの処理
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -82,8 +82,8 @@ function EventForm({ addEvent }) {
                         id="description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        rows="7"  // 高さを指定
-                        cols="63" // 幅を指定
+                        rows="7"
+                        cols="63"
                     />
                     {errors.description && <p className="error">{errors.description}</p>} {/* エラーメッセージは別の要素で表示 */}
                 </div>
