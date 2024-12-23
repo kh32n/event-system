@@ -1,33 +1,99 @@
+/* ナビゲーションバー全体のスタイル */
 .nav {
-    background-color: #333;
-    padding: 10px;
+  background-color: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between; /* 左右に要素を分ける */
+  align-items: center;
+
+  position: relative; /* 位置調整用 */
+}
+
+/* ナビゲーションリンクリストのスタイル */
+.nav_ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* リスト内のリンクを中央に配置 */
+  width: 100%; /* 親要素の幅を100%に設定 */
+}
+
+.nav_li {
+  font-size: 1.1rem;
+}
+
+.nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* リンクのホバー時のスタイル */
+.nav ul li a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* ログイン状態のテキスト表示 */
+.nav_p {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 20px;
+  text-align: center; /* テキストを中央に */
+  width: 10%;
+}
+
+/* ログアウトボタンのスタイル */
+.lb {
+  position: absolute;
+  right: 20px;  /* 右端に配置 */
+}
+
+.logout-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* ログアウトボタンのホバー効果 */
+.logout-button:hover {
+  background-color: #ff1a1a;
+}
+
+/* スマートフォン・タブレット向けのレスポンシブデザイン */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    flex-direction: row;
-    justify-content: center;
+
+  .nav_ul {
+    flex-direction: column;
+    gap: 15px;
   }
-  
-  .nav ul li {
-    margin-right: 20px;
+
+  .nav_li {
+    font-size: 1.2rem;
   }
-  
-  .nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
+
+  .nav_p {
+    margin-top: 10px;
+    font-size: 1.2rem;
   }
-  
-  .nav ul li a:hover {
-    color: #ff9900;
+
+  .lb {
+    margin-top: 10px;
+    margin-left: 0;
   }
-  .auth-status {
-    font-size: 14px;
-    color: white;
-    text-align: right;
-  } 
+}
+

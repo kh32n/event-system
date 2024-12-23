@@ -9,15 +9,16 @@ function LogoutButton() {
         const token = localStorage.getItem("token");
         // alert(`JWT Token: ${token}`);
         localStorage.removeItem("token");
+        localStorage.removeItem("userID")
 
         setIsLogin(false)
         alert("ログアウトしました");
 
-
+        
         navigate("/login");
     };
     return (
-        <button onClick={handleLogout}>
+        <button className='logout-button' onClick={handleLogout}>
             ログアウト
         </button>
     );

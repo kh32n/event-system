@@ -8,12 +8,15 @@ function LoginPage() {
     const navigate = useNavigate();
     const { setIsLogin } = React.useContext(AuthContext);
     const LoginUser = ({ username, password }) => {
-        Axios.post('http://localhost:3001/api/login/user', { username, password })
+        Axios.post('http://localhost:3001/api/user/login', { username, password })
             .then((res) => {
                 alert("ログインに成功しました");
                 const token = res.data.token;
                 localStorage.setItem("token", token);
                 // alert(`JWT Token: ${token}`);
+                const userID = res.data.userId
+                localStorage.setItem("userID",userID)
+                // alert(userID)
                 setIsLogin(true)
                 navigate("/");
 

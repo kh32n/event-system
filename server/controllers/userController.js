@@ -1,38 +1,18 @@
-const bcrypt = require('bcrypt');
+// eventController.js
 
-const User = require('../models/userModel.js');
+exports.getEventDetails = (req, res) => {
+    const { id } = req.params; // URLパラメータからidを取得
+    console.log(id);
 
-//TODO:ログイン処理にJWT認証のやつをつける＝＞authControllerに記載、RouteもAuthRouteに書く
-
-
-exports.createUser = (req, res) => {
-    const { username, email, password } = req.body;
-
-    bcrypt.hash(password, 10, (err, hashedPassword) => {
-        if (err) return res.status(500).json({ error: err });
-
-        User.createUser({ username, email, password: hashedPassword }, (err, result) => {
-            // err が null または undefined でないことを確認
-            if (err) {
-                console.log(err); // デバッグ用にエラーをログに出力
-
-                // err に code プロパティがある場合のみ処理
-                if (err.code) {
-                    if (err.code === 'ER_DUP_ENTRY') {
-                        if (err.sqlMessage.includes('username')) {
-                            return res.status(400).json({ error: 'このユーザーIDはすでに使用されています。別のユーザーIDをお試しください。' });
-                        }
-                        if (err.sqlMessage.includes('email')) {
-                            return res.status(400).json({ error: 'このメールアドレスはすでに使用されています。別のメールアドレスをお試しください。' });
-                        }
-                    }
-                } else {
-                    // err に code プロパティがない場合、一般的なデータベースエラーとして扱う
-                    return res.status(500).json({ error: 'Database error' });
-                }
-            }
-            // エラーがない場合、ユーザー作成成功のレスポンスを返す
-            res.status(201).json({ message: 'User created successfully!' });
-        });
+    // ここでIDに基づいてイベント詳細をデータベースから取得する
+    Event.getEventById(id, (err, event) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: 'イベント詳細の取得中にエラーが発生しました。' });
+        }
+        if (!event) {
+            return res.status(404).json({ error: '指定されたイベントは存在しません。' });
+        }
+        res.status(200).json(event);  // 取得したイベント詳細を返す
     });
 };
