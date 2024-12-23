@@ -73,6 +73,7 @@ function UserProfile() {
                         <li className="list_li" key={event.id}>
                             <h3 className='list_h3'>{event.name}</h3>
                             <p>{event.date}</p>
+                            <p>{event.location}</p>
                             <p>{event.description}</p>
                             <div className='button-container'>
                             <button onClick={() => Delete(event.id)} >参加取り消し</button>

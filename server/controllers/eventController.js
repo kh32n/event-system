@@ -86,7 +86,7 @@ exports.getUserEvent = (req, res) => {
 };
 
 exports.deleEvent = (req, res) => {
-    // const {user_id,event_id} = req.body
+    const {user_id,event_id} = req.body
     // console.log('Event ID:', event_id); // ID をコンソールで確認
     Event.deleteEvent({ user_id: user_id, event_id: event_id }, (err, event) => {
         if (err) {
