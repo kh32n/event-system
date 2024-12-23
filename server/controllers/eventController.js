@@ -84,3 +84,15 @@ exports.getUserEvent = (req, res) => {
         res.status(200).json(events);
     });
 };
+
+exports.deleEvent = (req, res) => {
+    // const {user_id,event_id} = req.body
+    // console.log('Event ID:', event_id); // ID をコンソールで確認
+    Event.deleteEvent({ user_id: user_id, event_id: event_id }, (err, event) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: 'イベント詳細の取得中にエラーが発生しました。' });
+        }
+        res.status(200).json({ message: 'Event join done' });
+    });
+};

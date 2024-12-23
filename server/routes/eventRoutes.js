@@ -21,4 +21,6 @@ router.post('/join/:id', eventController.joinEvent);
 //イベント参加取り消し
 router.post('/cancel/:id', eventController.cancelEvent);
 
+//イベント参加取り消しプロフィールから
+router.post('/delete', eventController.deleEvent);
 module.exports = router;

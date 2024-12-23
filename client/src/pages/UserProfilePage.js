@@ -41,9 +41,10 @@ function UserProfile() {
         getEventData();
     }, []);
 
-    const handleParticipationToggle = (id) => {
-        axios.post(`http://localhost:3001/api/event/cancel/${id}`, { user_id })
+    const Delete = (event_id) => {
+        axios.post(`http://localhost:3001/api/event/delete`, { user_id,event_id })
             .then(() => {
+                setEvents(events.filter(event => event.id !== event_id));
             })
             .catch((err) => {
                 console.error("Error canceling event participation", err);
@@ -74,7 +75,7 @@ function UserProfile() {
                             <p>{event.date}</p>
                             <p>{event.description}</p>
                             <div className='button-container'>
-                            <button onClick={() => handleParticipationToggle(event.id)} >参加取り消し</button>
+                            <button onClick={() => Delete(event.id)} >参加取り消し</button>
                             </div>
                         </li>
                     ))}
