@@ -15,6 +15,7 @@ function LoginPage() {
                 localStorage.setItem("token", token);
                 // alert(`JWT Token: ${token}`);
                 const userID = res.data.userId
+                alert(userID)
                 localStorage.setItem("userID",userID)
                 // alert(userID)
                 setIsLogin(true)

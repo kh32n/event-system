@@ -1,11 +1,10 @@
 // eventController.js
+const Event = require("../models/userModel")
 
-exports.getEventDetails = (req, res) => {
-    const { id } = req.params; // URLパラメータからidを取得
-    console.log(id);
+exports.getProfile = (req, res) => {
+    const user_id = req.body.user_id
 
-    // ここでIDに基づいてイベント詳細をデータベースから取得する
-    Event.getEventById(id, (err, event) => {
+    Event.getUserProfile(user_id, (err, event) => {
         if (err) {
             console.log(err);
             return res.status(500).json({ error: 'イベント詳細の取得中にエラーが発生しました。' });

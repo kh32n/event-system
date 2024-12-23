@@ -10,6 +10,7 @@ import Navbar from './components/Navbar.js';
 import Header from './components/Header.js';
 import { AuthProvider, AuthContext } from './context/AuthContext.js';
 import UserProfile from './pages/UserProfilePage.js';
+import Edit from "./pages/Edit.js"
 
 function App() {
 
@@ -40,10 +41,10 @@ function App() {
             path="/create-event"
             element={<PrivateRoute element={<CreateEvent />} />}
           />
-          
           <Route path="/events" element={<PrivateRoute element={<EventList/>} />} />
           <Route path="/event-detail/:id" element={<PrivateRoute element={<EventDetailPage />} />} />
           <Route path="/user-profile" element={<PrivateRoute element={<UserProfile />} />} />
+          <Route path="/user-profile/edit" element={<PrivateRoute element={<Edit />} />} />
         </Routes>
       </AuthProvider>
     </div>
