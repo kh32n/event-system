@@ -32,5 +32,35 @@ const User = {
             return callback(null, null);
         });
     },
+
+    //ユーザー情報の取得
+    getUserProfile: (user_id, callback) => {
+        const query = 'SELECT username, email, password FROM users WHERE id = ?';
+        db.query(query, [user_id], (err, result) => {
+            if (err) {
+                console.error('Error fetching user profile:', err);
+                return callback(err, null); // エラー発生時にコールバックを呼ぶ
+            }
+            if (result.length === 0) {
+                return callback(null, null); // ユーザーが見つからなかった場合
+            }
+
+            return callback(null, result[0]);
+        });
+    },
+
+    //ユーザー情報の更新処理
+    updateProfile: (userId, data, callback) => {
+        const { username, email, password } = data;
+        let query = 'UPDATE users SET username = ?, email = ? WHERE id = ?';
+    
+        // パスワードが提供されていれば、更新する
+        if (password) {
+          query = 'UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?';
+          db.query(query, [username, email, password, userId], callback);
+        } else {
+          db.query(query, [username, email, userId], callback);
+        }
+      }
 }
 module.exports = User;

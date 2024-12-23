@@ -70,3 +70,33 @@ exports.loginUser = (req, res) => {
         });
     });
 };
+
+
+exports.updateUserProfile = (req, res) => {
+    const { userId, username, email, password } = req.body;
+  
+    // パスワードが提供されている場合、ハッシュ化して更新
+    let updateData = { username, email };
+    if (password) {
+      bcrypt.hash(password, 10, (err, hashedPassword) => {
+        if (err) {
+          return res.status(500).json({ error: 'パスワードのハッシュ化に失敗しました' });
+        }
+        updateData.password = hashedPassword;
+        User.updateProfile(userId, updateData, (err, result) => {
+          if (err) {
+            return res.status(500).json({ error: 'プロフィールの更新に失敗しました' });
+          }
+          res.status(200).json({ message: 'プロフィールが更新されました' });
+        });
+      });
+    } else {
+      // パスワードが提供されていない場合、パスワードを更新せずに情報だけ更新
+      User.updateProfile(userId, updateData, (err, result) => {
+        if (err) {
+          return res.status(500).json({ error: 'プロフィールの更新に失敗しました' });
+        }
+        res.status(200).json({ message: 'プロフィールが更新されました' });
+      });
+    }
+  };

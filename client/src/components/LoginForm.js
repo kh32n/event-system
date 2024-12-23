@@ -6,7 +6,7 @@ function LoginForm({LoginUser}) {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ userID: '', password: '' });
 
-
+//ボタンを押したときの処理
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -17,12 +17,12 @@ function LoginForm({LoginUser}) {
     if (!userID.trim()) {
       newErrors.userID = 'ユーザーIDを入力してください。';
       isValid = false;
-    } 
+    }
 
     if (!password.trim()) {
       newErrors.password = 'パスワードを入力してください。';
       isValid = false;
-    } 
+    }
 
     setErrors(newErrors);
 

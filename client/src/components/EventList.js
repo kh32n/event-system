@@ -31,7 +31,7 @@ function EventList() {
             <h1>イベント一覧</h1>
 
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-
+            {/*イベントがあった場合ひとつづつ表示*/}
             {events.length > 0 ? (
                 <ul>
                     {events.map((event) => (

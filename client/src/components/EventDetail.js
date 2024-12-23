@@ -9,6 +9,7 @@ function EventDetailPage() {
     const [event, setEvent] = useState(null);
     const [isJoin, setIsJoin] = useState(false);
 
+    //イベント詳細情報の取得
     useEffect(() => {
         const getEvent = () => {
             Axios.get(`http://localhost:3001/api/event/detail/${id}`)
@@ -26,8 +27,6 @@ function EventDetailPage() {
     // 参加ボタンをクリックしたときの処理
     const handleParticipationToggle = () => {
         setIsJoin(!isJoin);
-        //TODO;参加を押した際にデータベースに保存
-        //id,user_id,event_id,registered_at(参加した時間),unique_user_event
         const userID = localStorage.getItem("userID");
         if (!isJoin){
             axios.post(`http://localhost:3001/api/event/join/${id}`, { userID})
@@ -36,6 +35,7 @@ function EventDetailPage() {
                 alert("すでに参加しています")
             });
         }
+    //キャンセルボタンを押したときの処理
         if (isJoin){
             axios.post(`http://localhost:3001/api/event/cancel/${id}`, { userID})
             .catch((err) => {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import '../styles/Signup.css';
 
-function SignupForm({ addUser }) {
+function SignupForm({ updateUser }) {
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -38,13 +38,13 @@ function SignupForm({ addUser }) {
     setErrors(newErrors);
 
     if (isValid) {
-      addUser(username, email, password);
+      updateUser(username, email, password);
     }
   };
 
   return (
     <div className="formContainer">
-      <h1 className="title">新規登録</h1>
+      <h1 className="title">ユーザー更新</h1>
       <hr />
       <form className="form" onSubmit={handleSubmit}>
         <div className="inputField">
@@ -56,6 +56,7 @@ function SignupForm({ addUser }) {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="ユーザーIDを入力してください"
           />
+          {/*エラーがあった際に表示*/}
           {errors.userID && <p className="error">{errors.userID}</p>}
         </div>
         <div className="inputField">
@@ -67,6 +68,7 @@ function SignupForm({ addUser }) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="メールアドレスを入力してください"
           />
+          {/*エラーがあった際に表示*/}
           {errors.email && <p className="error">{errors.email}</p>}
         </div>
         <div className="inputField">
@@ -78,10 +80,10 @@ function SignupForm({ addUser }) {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="パスワードを入力してください"
           />
+          {/*エラーがあった際に表示*/}
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
         <div className="buttonContainer">
-          {/* ボタンをクリックしてフォーム送信が行われるようにする */}
           <button className="signup" type="submit">登録</button>
         </div>
       </form>

@@ -7,6 +7,8 @@ import { AuthContext } from '../context/AuthContext.js';
 function LoginPage() {
     const navigate = useNavigate();
     const { setIsLogin } = React.useContext(AuthContext);
+
+    //ログイン処理
     const LoginUser = ({ username, password }) => {
         Axios.post('http://localhost:3001/api/user/login', { username, password })
             .then((res) => {
@@ -15,6 +17,7 @@ function LoginPage() {
                 localStorage.setItem("token", token);
                 // alert(`JWT Token: ${token}`);
                 const userID = res.data.userId
+                // alert(userID)
                 localStorage.setItem("userID",userID)
                 // alert(userID)
                 setIsLogin(true)

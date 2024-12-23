@@ -11,6 +11,7 @@
   // `./routes/userRoutes` にはユーザー関連の API エンドポイントが定義されている
   const authRoutes = require("./routes/authRoutes");
   const eventRoutes = require("./routes/eventRoutes")
+  const userRoutes = require('./routes/userRoutes')
   // `express` アプリケーションを作成
   // `app` オブジェクトはサーバーの設定とエンドポイントの定義を管理する
   const app = express();
@@ -30,6 +31,8 @@
   // ルートを設定
   app.use('/api/user', authRoutes);
   app.use('/api/event', eventRoutes);
+  app.use('/api/profile', userRoutes);
+  
   // サーバーのルートエンドポイントを定義
   // `GET /` リクエストに対して、シンプルなメッセージをレスポンスとして返す
   app.get('/', (req, res) => {

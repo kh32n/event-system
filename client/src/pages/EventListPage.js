@@ -6,7 +6,8 @@ import '../styles/EventList.css'; // CSSファイルをインポート
 function EventListPage() {
     const [events, setEvents] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
-
+    
+    //イベントをすべて取得
     useEffect(() => {
         Axios.get('http://localhost:3001/api/event/list')
             .then((res) => {
