@@ -9,6 +9,7 @@ import EventList from './pages/EventListPage';
 import Navbar from './components/Navbar.js';
 import Header from './components/Header.js';
 import { AuthProvider, AuthContext } from './context/AuthContext.js';
+import UserProfile from './pages/UserProfilePage.js';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
           
           <Route path="/events" element={<PrivateRoute element={<EventList/>} />} />
           <Route path="/event-detail/:id" element={<PrivateRoute element={<EventDetailPage />} />} />
+          <Route path="/user-profile" element={<PrivateRoute element={<UserProfile />} />} />
         </Routes>
       </AuthProvider>
     </div>

@@ -16,6 +16,7 @@ function Navbar() {
               <li className='nav_li'><Link to="/">ホーム</Link></li>
               <li className='nav_li'><Link to="/create-event">イベント作成</Link></li>
               <li className='nav_li'><Link to="/events">イベント一覧</Link></li>
+              <li className='nav_li'><Link to="/user-profile" >プロフィール</Link></li>
             </ul>
             <div className='lb'>
               <LogoutButton /> {/* ログインしている場合にのみ表示 */}
